@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Christmas Gift Exchange</title>
+    <!-- Load Brython and its standard library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython_stdlib.js"></script>
+  </head>
+  <body onload="brython()">
+    <h1>Christmas Gift Exchange</h1>
+    <p>
+      Enter last year's assignments for each family member (or type "None" if there wasn't one):
+    </p>
+    <form id="assignment-form">
+      <div>
+        <label for="John">John: </label>
+        <input type="text" id="John" name="John" placeholder="Enter last assignment">
+      </div>
+      <div>
+        <label for="Ellie">Ellie: </label>
+        <input type="text" id="Ellie" name="Ellie" placeholder="Enter last assignment">
+      </div>
+      <div>
+        <label for="Sam">Sam: </label>
+        <input type="text" id="Sam" name="Sam" placeholder="Enter last assignment">
+      </div>
+      <div>
+        <label for="Kennedy">Kennedy: </label>
+        <input type="text" id="Kennedy" name="Kennedy" placeholder="Enter last assignment">
+      </div>
+      <div>
+        <label for="Matthew">Matthew: </label>
+        <input type="text" id="Matthew" name="Matthew" placeholder="Enter last assignment">
+      </div>
+      <div>
+        <label for="Sarah">Sarah: </label>
+        <input type="text" id="Sarah" name="Sarah" placeholder="Enter last assignment">
+      </div>
+      <div>
+        <label for="Emily">Emily: </label>
+        <input type="text" id="Emily" name="Emily" placeholder="Enter last assignment">
+      </div>
+      <br>
+      <button type="button" id="generate-btn">Generate Assignment</button>
+    </form>
+    <div id="result"></div>
+
+    <script type="text/python">
+        from browser import document, html, alert
+        import random
+
+        # Family data with spouse info; last_assigned will be updated from the form.
+        family_data = {
+            "John": {"spouse": "Ellie", "last_assigned": None},
+            "Ellie": {"spouse": "John", "last_assigned": None},
+            "Sam": {"spouse": "Kennedy", "last_assigned": None},
+            "Kennedy": {"spouse": "Sam", "last_assigned": None},
+            "Matthew": {"spouse": None, "last_assigned": None},
+            "Sarah": {"spouse": None, "last_assigned": None},
+            "Emily": {"spouse": None, "last_assigned": None}
+        }
+
+        def find_unique_gift_exchange_assignments(family_data):
+            def is_valid_assignment(candidate, member, last_assigned, spouse):
+                return candidate != member and candidate != last_assigned and candidate != spouse
+
+            def get_valid_candidates(member, members):
+                spouse = family_data[member]['spouse']
+                last_assigned = family_data[member]['last_assigned']
+                return [candidate for candidate in members if is_valid_assignment(candidate, member, last_assigned, spouse)]
+
+            members = list(family_data.keys())
+            random.shuffle(members)
+            max_attempts = 10000
+            for attempt in range(max_attempts):
+                random.shuffle(members)
+                assignments = dict.fromkeys(members)
+                all_matched = True
+
+                for member in members:
+                    valid_candidates = get_valid_candidates(member, members)
+                    valid_candidates = [candidate for candidate in valid_candidates if candidate not in assignments.values()]
+                    if not valid_candidates:
+                        all_matched = False
+                        break
+                    assignments[member] = random.choice(valid_candidates)
+
+                if all_matched:
+                    return assignments
+            return None
+
+        def generate_assignment(event):
+            # Update last_assigned for each member from the input fields.
+            for member in family_data.keys():
+                value = document[member].value.strip()
+                if value.lower() == "none" or value == "":
+                    family_data[member]["last_assigned"] = None
+                else:
+                    if value in family_data and value != member:
+                        family_data[member]["last_assigned"] = value
+                    else:
+                        alert(f"Invalid input for {member}. Please enter a valid family member name or 'None'.")
+                        return
+
+            assignments = find_unique_gift_exchange_assignments(family_data)
+            result_div = document["result"]
+            result_div.innerHTML = ""  # Clear previous results
+
+            if assignments:
+                result_div <= html.H2("Christmas Gift Exchange Assignments:")
+                for giver, recipient in assignments.items():
+                    result_div <= html.P(f"{giver} is assigned to {recipient}.")
+            else:
+                result_div <= html.P("No valid gift exchange assignments could be found with the given constraints.")
+
+        document["generate-btn"].bind("click", generate_assignment)
+    </script>
+  </body>
+</html>
