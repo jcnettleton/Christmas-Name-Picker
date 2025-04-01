@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const recipientName = memberMap.get(recipientId) || 'Unknown Recipient';
 
                 const li = document.createElement('li');
-                li.textContent = `${giverName} gives a gift to ${recipientName}`;
+                li.textContent = `${giverName} gives a gift to ${recipientName} ${randomEmojiPicker()}`;
                 assignmentList.appendChild(li);
             }
              reshuffleBtn.style.display = 'block'; // Show reshuffle button on success
@@ -369,6 +369,23 @@ document.addEventListener('DOMContentLoaded', () => {
              reshuffleBtn.style.display = 'none'; // Hide reshuffle button on failure
              assignmentList.innerHTML = ''; // Clear any potentially stale list items
         }
+    }
+
+    function randomEmojiPicker() {
+        const emojiList = [
+            "🎄", "🎅", "🤶", "🧑‍🎄", "🦌", "🎁", "🎀", "🌟", "✨", "❄️",
+            "☃️", "⛄", "🕯️", "🔔", "🧦", "🔥", "🪵", "🧤", "🧣", "🧥",
+            "🍪", "🥛", "🍷", "🥂", "🍾", "🥧", "🍊", "🎆", "🎇", "🎉",
+            "🎊", "🎈", "🥳", "🎂", "🍰", "🧁", "🍕", "🍔", "🍟", "🍿",
+            "🍩", "🍫", "🍬", "🍭", "🍺", "🍻", "🍸", "🍹", "🍽️", "🧊",
+            "🎶", "🎵", "🎤", "🎧", "🎷", "🎺", "🎸", "🥁", "🎹", "🎻",
+            "💃", "🕺", "👯", "🧑‍🎤", "😊", "😄", "🤩", "😍",
+            "🥰", "🤗", "😂", "👍", "🙌", "👏", "🙏", "💖", "❤️", "🧡",
+            "💛", "💚", "💙", "💜", "⭐", "💫", "💯", "🕰️", "🕛", "💡",
+            "🏆", "🥇"
+          ]
+          
+        return emojiList[Math.floor(Math.random() * emojiList.length)]
     }
 
     // --- Action Trigger Function ---

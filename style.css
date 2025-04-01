@@ -1,3 +1,8 @@
+:root {
+    --christmas-red: #8e0c0c;
+    --christmas-green: #17751C;
+}
+
 body {
     font-family: sans-serif;
     line-height: 1.6;
@@ -8,7 +13,7 @@ body {
 }
 
 header {
-    background-color: #c0392b; /* Christmas Red */
+    background-color: var(--christmas-red); /* Christmas Red */
     color: #fff;
     padding: 1rem 0;
     text-align: center;
@@ -29,7 +34,7 @@ main {
 }
 
 button {
-    background-color: #27ae60; /* Christmas Green */
+    background-color: var(--christmas-green); /* Christmas Green */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -85,11 +90,11 @@ button[id^="backTo"]:hover {
     margin-bottom: 8px;
     padding: 10px;
     border-radius: 4px;
-    border-left: 5px solid #27ae60; /* Green accent */
+    border-left: 5px solid var(--christmas-green); /* Green accent */
 }
 
 .error-message {
-    color: #c0392b; /* Red */
+    color: var(--christmas-red); /* Red */
     font-weight: bold;
     text-align: center;
 }
@@ -142,7 +147,7 @@ button[id^="backTo"]:hover {
     margin-top: 0;
     border-bottom: 1px solid #eee;
     padding-bottom: 0.5rem;
-    color: #c0392b;
+    color: var(--christmas-red);
 }
 .modal-step label,
 .modal-step p {
@@ -194,7 +199,7 @@ button[id^="backTo"]:hover {
     text-align: center;
 }
 .input-group .remove-member-btn:hover {
-     background-color: #c0392b;
+     background-color: var(--christmas-red);
 }
 
 
