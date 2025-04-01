@@ -1,0 +1,223 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #c0392b; /* Christmas Red */
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.controls {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+button {
+    background-color: #27ae60; /* Christmas Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #229954;
+}
+
+button#addMemberBtn {
+    background-color: #3498db; /* Blue */
+}
+button#addMemberBtn:hover {
+    background-color: #2980b9;
+}
+
+button#skipLastYearBtn,
+button[id^="backTo"] { /* Style Back/Skip buttons */
+     background-color: #f39c12; /* Orange */
+}
+button#skipLastYearBtn:hover,
+button[id^="backTo"]:hover {
+    background-color: #e67e22;
+}
+
+
+.results-area {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #e8f8f5; /* Light teal */
+}
+
+.results-area h2 {
+    margin-top: 0;
+    color: #16a085; /* Teal */
+    text-align: center;
+}
+
+#assignmentList {
+    list-style: none;
+    padding: 0;
+}
+
+#assignmentList li {
+    background-color: #fff;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 5px solid #27ae60; /* Green accent */
+}
+
+.error-message {
+    color: #c0392b; /* Red */
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 25px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-step {
+    margin-bottom: 1rem;
+}
+.modal-step h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    color: #c0392b;
+}
+.modal-step label,
+.modal-step p {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+.modal-step input[type="number"],
+.modal-step input[type="text"],
+.modal-step select {
+    width: 95%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 10px;
+}
+.input-group label {
+    flex-basis: 100px; /* Fixed width for labels */
+    margin-right: 10px;
+    margin-bottom: 0; /* Reset margin */
+    text-align: right;
+    font-weight: normal;
+}
+.input-group input,
+.input-group select {
+    flex-grow: 1; /* Take remaining space */
+    margin-bottom: 0;
+}
+.input-group .remove-member-btn {
+    background-color: #e74c3c; /* Red */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    line-height: 1; /* Adjust line height */
+    height: 25px;
+    width: 25px;
+    text-align: center;
+}
+.input-group .remove-member-btn:hover {
+     background-color: #c0392b;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    color: #777;
+    font-size: 0.9em;
+}
+
+.reshuffle-button {
+    background-color: #8e44ad; /* Purple */
+    color: white;
+    display: block; /* Make it block to center easily */
+    margin: 10px auto 15px auto; /* Add some margin */
+}
+
+.reshuffle-button:hover {
+    background-color: #7d3c98;
+}
+
+/* Ensure results area styling accommodates button */
+.results-area h2 {
+     margin-bottom: 0.5rem; /* Add some space below heading */
+}
